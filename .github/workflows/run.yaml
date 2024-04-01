@@ -2,12 +2,20 @@ name: Run
 
 on:
   workflow_dispatch:
+    inputs:
+      enable-ipv6:
+        description: 'Enable IPv6 (with WARP)'
+        required: true
+        default: 'false'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Setup WARP
+      uses: fscarmen/warp-on-actions@v1.1
+      if: ${{ github.event.inputs.enable-warp == 'true' }}
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
       with:
