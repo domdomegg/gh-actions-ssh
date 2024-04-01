@@ -16,7 +16,7 @@ jobs:
     steps:
     - name: Setup WARP
       uses: fscarmen/warp-on-actions@v1.1
-      if: ${{ github.event.inputs.enable-warp }}
+      if: ${{ inputs.enable-ipv6 }}
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@v3
       with:
